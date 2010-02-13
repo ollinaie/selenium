@@ -1,0 +1,38 @@
+// builds and installs the selenium-server jar file
+//load('jmvc/build-selenium')
+load('jmvc/rhino/loader.js')
+rhinoLoader(function(){
+    
+    include('jmvc/file/file');
+});
+
+
+(function(){
+    // check that projects exist
+    var core = new include.File("selenium/build/selenium-core");
+    var rc = new include.File("selenium/build/rc");
+    if(!core.exists() || !rc.exists()){
+        print("You forgot to install selenium using the install-selenium script!")
+        return;
+    }
+    
+    // copy synthetic and jquery into selenium-core scripts folder
+    var copies = {
+    	"jmvc/test/synthetic/synthetic.js" 		: "selenium/build/selenium-core/src/main/resources/core/scripts/synthetic.js",
+    	"jquery/jquery.js"	   			   		: "selenium/build/selenium-core/src/main/resources/core/scripts/jquery.js",
+    	"jmvc/test/funcunit/drivers/json.js"    : "selenium/build/selenium-core/src/main/resources/core/scripts/json.js",
+    	"jmvc/test/funcunit/drivers/wrapped.js" : "selenium/build/selenium-core/src/main/resources/core/scripts/wrapped.js",
+    	"selenium/core/RemoteRunner.html"  		: "selenium/build/selenium-core/src/main/resources/core/RemoteRunner.html"
+    }
+    for(var from in copies){
+    	new include.File(from).copy_to( copies[from] )
+    }
+    
+    
+    // run the mvn install script
+    runCommand("cmd", "/C", "cd selenium/build/rc && mvn -Pcore install -DskipTests")
+    
+    // copy the jar file into test folder
+    var jar = new include.File("selenium/build/rc/selenium-server/target/selenium-server-1.0.1-standalone.jar")
+    jar.copy_to("jmvc/rhino/selenium-server.jar");
+})()

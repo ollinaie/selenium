@@ -1,0 +1,5 @@
+// sets up selenium in the projects directory
+
+// check out core and rc
+runCommand("cmd", "/C", "cd build && svn checkout http://selenium.googlecode.com/svn/selenium-rc/tags/REL-1.0.1 rc")
+runCommand("cmd", "/C", "cd build && svn checkout http://selenium.googlecode.com/svn/selenium-core/tags/REL-1.0.1 selenium-core")
