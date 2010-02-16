@@ -7,8 +7,8 @@ rhinoLoader(function(){
 
 (function(){
     // check that projects exist
-    var core = new include.File("selenium/build/selenium-core");
-    var rc = new include.File("selenium/build/rc");
+    var core = new steal.File("selenium/build/selenium-core");
+    var rc = new steal.File("selenium/build/rc");
     if(!core.exists() || !rc.exists()){
         print("You forgot to install selenium using the install-selenium script!")
         return;
@@ -23,7 +23,7 @@ rhinoLoader(function(){
     	"selenium/core/RemoteRunner.html"  		: "selenium/build/selenium-core/src/main/resources/core/RemoteRunner.html"
     }
     for(var from in copies){
-    	new include.File(from).copy_to( copies[from] )
+    	new steal.File(from).copy_to( copies[from] )
     }
     
     
@@ -31,6 +31,6 @@ rhinoLoader(function(){
     runCommand("cmd", "/C", "cd selenium/build/rc && mvn -Pcore install -DskipTests")
     
     // copy the jar file into test folder
-    var jar = new include.File("selenium/build/rc/selenium-server/target/selenium-server-1.0.1-standalone.jar")
+    var jar = new steal.File("selenium/build/rc/selenium-server/target/selenium-server-1.0.1-standalone.jar")
     jar.copy_to("steal/rhino/selenium-server.jar");
 })()
