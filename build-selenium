@@ -19,7 +19,7 @@ rhinoLoader(function(){
     	"funcunit/synthetic/synthetic.js" 		: "selenium/build/selenium-core/src/main/resources/core/scripts/synthetic.js",
     	"jquery/jquery.js"	   			   		: "selenium/build/selenium-core/src/main/resources/core/scripts/jquery.js",
     	"funcunit/funcunit/drivers/json.js"    : "selenium/build/selenium-core/src/main/resources/core/scripts/json.js",
-    	"funcunit/funcunit/drivers/wrapped.js" : "selenium/build/selenium-core/src/main/resources/core/scripts/wrapped.js",
+    	"selenium/core/wrapped.js" : "selenium/build/selenium-core/src/main/resources/core/scripts/wrapped.js",
     	"selenium/core/RemoteRunner.html"  		: "selenium/build/selenium-core/src/main/resources/core/RemoteRunner.html"
     }
     for(var from in copies){
