@@ -5,16 +5,16 @@ jQuery.wrapped = function(){
 		method = args.shift(), 
 		q, a;
 
-	//if (_win().jQuery && parseFloat(_win().jQuery().jquery) >= 1.3) {
-	//	var a = _win().jQuery(selector, context);
-	//    q = jQuery(a.get());
-	//} else {
+	if (_win().jQuery && parseFloat(_win().jQuery().jquery) >= 1.3) {
+		a = _win().jQuery(selector, context);
+	    q = jQuery(a.get());
+	} else {
 	    q = jQuery(selector, context);
-	//}
+	}
 	
-	//need to conver to json
 	var res = q[method].apply(q, args);
     
+	//need to convert to json
     return jQuery.toJSON(res.jquery ? true : res)
 }
 _doc = function(){

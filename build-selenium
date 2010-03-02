@@ -17,9 +17,9 @@ rhinoLoader(function(){
     // copy synthetic and jquery into selenium-core scripts folder
     var copies = {
     	"funcunit/synthetic/synthetic.js" 		: "selenium/build/selenium-core/src/main/resources/core/scripts/synthetic.js",
-    	"jquery/jquery.js"	   			   		: "selenium/build/selenium-core/src/main/resources/core/scripts/jquery.js",
-    	"funcunit/funcunit/drivers/json.js"    : "selenium/build/selenium-core/src/main/resources/core/scripts/json.js",
-    	"selenium/core/wrapped.js" : "selenium/build/selenium-core/src/main/resources/core/scripts/wrapped.js",
+    	"funcunit/functional/jquery.js"	   		: "selenium/build/selenium-core/src/main/resources/core/scripts/jquery.js",
+    	"funcunit/functional/drivers/json.js"   : "selenium/build/selenium-core/src/main/resources/core/scripts/json.js",
+    	"selenium/core/wrapped.js" 				: "selenium/build/selenium-core/src/main/resources/core/scripts/wrapped.js",
     	"selenium/core/RemoteRunner.html"  		: "selenium/build/selenium-core/src/main/resources/core/RemoteRunner.html"
     }
     for(var from in copies){
@@ -33,4 +33,5 @@ rhinoLoader(function(){
     // copy the jar file into test folder
     var jar = new steal.File("selenium/build/rc/selenium-server/target/selenium-server-1.0.1-standalone.jar")
     jar.copy_to("steal/rhino/selenium-server.jar");
+    jar.copy_to("funcunit/dist/rhino/selenium-server.jar");
 })()
